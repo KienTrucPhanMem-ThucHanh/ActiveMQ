@@ -1,7 +1,10 @@
 package fit.iuh.edu.vn.backends.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "customer")
@@ -13,19 +16,19 @@ import lombok.*;
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cust-id")
     private long id;
+
     private String name;
-    private String email;
     private String address;
+    private String email;
 
     public Customer(long id) {
         this.id = id;
     }
 
-    public Customer(String name, String email, String address) {
+    public Customer(String name, String address, String email) {
         this.name = name;
-        this.email = email;
         this.address = address;
+        this.email = email;
     }
 }

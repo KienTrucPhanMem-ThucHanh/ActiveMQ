@@ -4,7 +4,6 @@ import fit.iuh.edu.vn.backends.entities.Customer;
 import fit.iuh.edu.vn.backends.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
@@ -14,7 +13,7 @@ public class CustomerConfig {
 //    @Bean
     CommandLineRunner addCustomer(){
         return args -> {
-            Customer customer = new Customer("Hiep","hoaihiep12b1thptlochung2020@gmail.com","Go Vap");
+            Customer customer = new Customer("Hiep","Go Vap","hoaihiep12b1thptlochung2020@gmail.com");
             customerRepository.save(customer);
         };
     }

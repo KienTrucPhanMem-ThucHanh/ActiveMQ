@@ -1,7 +1,10 @@
 package fit.iuh.edu.vn.backends.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "product")
@@ -9,23 +12,32 @@ import lombok.*;
 @AllArgsConstructor
 @Getter
 @Setter
-@ToString
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "product-id")
-    private Long id;
+    private long id;
+
     private String name;
     private double price;
-    private int quantity;
 
-    public Product(Long id) {
+    @OneToOne(mappedBy = "product", cascade = CascadeType.ALL)
+    private ProductQuantity productQuantity;
+
+    public Product(long id) {
         this.id = id;
     }
 
-    public Product(String name, double price, int quantity) {
+    public Product(String name, double price) {
         this.name = name;
         this.price = price;
-        this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                '}';
     }
 }

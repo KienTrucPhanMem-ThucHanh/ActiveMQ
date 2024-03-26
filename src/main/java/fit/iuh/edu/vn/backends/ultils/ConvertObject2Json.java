@@ -12,9 +12,15 @@ import java.util.List;
 
 @Component
 public class ConvertObject2Json {
-    private static final Gson gson = new GsonBuilder()
-            .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
-            .create();
+//    private static final Gson gson = new GsonBuilder()
+//            .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
+//            .create();
+//    private static final Gson gson = new GsonBuilder()
+//            .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
+//            .excludeFieldsWithoutExposeAnnotation()
+//            .disableInnerClassSerialization()
+//            .create();
+    private static final Gson gson = new Gson();
 
     // Hàm để chuyển đổi object thành JSON
     public String objectToJson(Object obj) {
